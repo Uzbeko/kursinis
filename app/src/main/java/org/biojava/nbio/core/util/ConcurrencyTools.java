@@ -23,8 +23,8 @@
 
 package org.biojava.nbio.core.util;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
 
 import java.util.concurrent.*;
 
@@ -36,7 +36,7 @@ import java.util.concurrent.*;
  */
 public class ConcurrencyTools {
 
-	private final static Logger logger = LoggerFactory.getLogger(ConcurrencyTools.class);
+//	private final static Logger logger = LoggerFactory.getLogger(ConcurrencyTools.class);
 
 	private static ThreadPoolExecutor pool;
 	private static int tasks = 0;
@@ -132,7 +132,7 @@ public class ConcurrencyTools {
 					pool.shutdownNow(); // cancel currently executing tasks
 					// wait a while for tasks to respond to being canceled
 					if (!pool.awaitTermination(60L, TimeUnit.SECONDS)) {
-						logger.warn("BioJava ConcurrencyTools thread pool did not terminate");
+//						logger.warn("BioJava ConcurrencyTools thread pool did not terminate");
 					}
 				}
 			} catch (InterruptedException ie) {
@@ -151,7 +151,7 @@ public class ConcurrencyTools {
 	 * @return future on which the desired value is retrieved by calling get()
 	 */
 	public static<T> Future<T> submit(Callable<T> task, String message) {
-		logger.debug("Task " + (++tasks) + " submitted to shared thread pool. " + message);
+//		logger.debug("Task " + (++tasks) + " submitted to shared thread pool. " + message);
 		return getThreadPool().submit(task);
 	}
 

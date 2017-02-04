@@ -27,8 +27,8 @@ import org.biojava.nbio.core.sequence.compound.AminoAcidCompoundSet;
 import org.biojava.nbio.core.sequence.io.template.FastaHeaderFormatInterface;
 import org.biojava.nbio.core.sequence.template.Compound;
 import org.biojava.nbio.core.sequence.template.Sequence;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
 
 import java.io.BufferedOutputStream;
 import java.io.FileInputStream;
@@ -48,7 +48,7 @@ import java.util.LinkedHashMap;
  */
 public class FastaWriter<S extends Sequence<?>, C extends Compound> {
 
-	private final static Logger logger = LoggerFactory.getLogger(FastaWriter.class);
+//	private final static Logger logger = LoggerFactory.getLogger(FastaWriter.class);
 
 	OutputStream os;
 	Collection<S> sequences;
@@ -148,13 +148,13 @@ public class FastaWriter<S extends Sequence<?>, C extends Compound> {
 			fastaWriter.process();
 			bo.close();
 			long end = System.currentTimeMillis();
-			logger.info("Took {} seconds", (end - start));
+//			logger.info("Took {} seconds", (end - start));
 
 			fileOutputStream.close();
 
 
 		} catch (IOException e) {
-			logger.warn("Exception: ", e);
+//			logger.warn("Exception: ", e);
 		}
 	}
 

@@ -24,8 +24,8 @@
 
 package org.biojava.nbio.core.util;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
 
 import java.io.*;
 
@@ -36,7 +36,7 @@ import java.io.*;
  */
 public class FlatFileCache {
 
-	private final static Logger logger = LoggerFactory.getLogger(FlatFileCache.class);
+//	private final static Logger logger = LoggerFactory.getLogger(FlatFileCache.class);
 
 	private static FlatFileCache me ;
 
@@ -95,7 +95,7 @@ public class FlatFileCache {
 			cache.put(key,bytes);
 
 		} catch (Exception e){
-			logger.error("Error adding to cache! " + e.getMessage(), e);
+//			logger.error("Error adding to cache! " + e.getMessage(), e);
 		}
 	}
 

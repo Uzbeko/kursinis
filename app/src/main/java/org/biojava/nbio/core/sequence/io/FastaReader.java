@@ -29,8 +29,8 @@ import org.biojava.nbio.core.sequence.io.template.SequenceCreatorInterface;
 import org.biojava.nbio.core.sequence.io.template.SequenceHeaderParserInterface;
 import org.biojava.nbio.core.sequence.template.Compound;
 import org.biojava.nbio.core.sequence.template.Sequence;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
 
 import java.io.*;
 import java.util.HashMap;
@@ -43,7 +43,7 @@ import java.util.LinkedHashMap;
  */
 public class FastaReader<S extends Sequence<?>, C extends Compound> {
 
-	private final static Logger logger = LoggerFactory.getLogger(FastaReader.class);
+//	private final static Logger logger = LoggerFactory.getLogger(FastaReader.class);
 
 	SequenceCreatorInterface<C> sequenceCreator;
 	SequenceHeaderParserInterface<S,C> headerParser;
@@ -167,8 +167,8 @@ public class FastaReader<S extends Sequence<?>, C extends Compound> {
 							processedSequences++;
 
 						} catch (CompoundNotFoundException e) {
-							logger.warn("Sequence with header '{}' has unrecognised compounds ({}), it will be ignored",
-									header, e.getMessage());
+//							logger.warn("Sequence with header '{}' has unrecognised compounds ({}), it will be ignored",
+//									header, e.getMessage());
 						}
 
 						sb.setLength(0); //this is faster than allocating new buffers, better memory utilization (same buffer)
@@ -198,8 +198,8 @@ public class FastaReader<S extends Sequence<?>, C extends Compound> {
 				//i.e. EOF
 				String seq = sb.toString();
 				if ( seq.length() == 0) {
-					logger.warn("Can't parse sequence {}. Got sequence of length 0!", sequenceIndex);
-					logger.warn("header: {}", header);
+//					logger.warn("Can't parse sequence {}. Got sequence of length 0!", sequenceIndex);
+//					logger.warn("header: {}", header);
 				}
 				//logger.info("Sequence index=" + sequenceIndex + " " + fileIndex );
 				try {
@@ -209,8 +209,8 @@ public class FastaReader<S extends Sequence<?>, C extends Compound> {
 					sequences.put(sequence.getAccession().getID(),sequence);
 					processedSequences++;
 				} catch (CompoundNotFoundException e) {
-					logger.warn("Sequence with header '{}' has unrecognised compounds ({}), it will be ignored",
-							header, e.getMessage());
+//					logger.warn("Sequence with header '{}' has unrecognised compounds ({}), it will be ignored",
+//							header, e.getMessage());
 				}
 				keepGoing = false;
 			}
@@ -267,16 +267,16 @@ public class FastaReader<S extends Sequence<?>, C extends Compound> {
 
 			for(String key : proteinProxySequences.keySet()){
 				ProteinSequence proteinSequence = proteinProxySequences.get(key);
-				logger.info("Protein Proxy Sequence Key: {}", key);
+//				logger.info("Protein Proxy Sequence Key: {}", key);
 //                if(key.equals("Q98SJ1_CHICK/15-61")){
 //                    int dummy = 1;
 //                }
-				logger.info("Protein Sequence: {}", proteinSequence.toString());
+//				logger.info("Protein Sequence: {}", proteinSequence.toString());
 
 			}
 
 		} catch (Exception e) {
-			logger.warn("Exception: ", e);
+//			logger.warn("Exception: ", e);
 		}
 	}
 }

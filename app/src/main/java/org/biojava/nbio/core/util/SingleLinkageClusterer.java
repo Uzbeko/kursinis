@@ -20,8 +20,8 @@
  */
 package org.biojava.nbio.core.util;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
 
 import java.util.*;
 
@@ -36,7 +36,7 @@ import java.util.*;
  */
 public class SingleLinkageClusterer {
 
-	private static final Logger logger = LoggerFactory.getLogger(SingleLinkageClusterer.class);
+//	private static final Logger logger = LoggerFactory.getLogger(SingleLinkageClusterer.class);
 
 	private class LinkedPair {
 
@@ -135,7 +135,7 @@ public class SingleLinkageClusterer {
 		dendrogram = new LinkedPair[numItems-1];
 
 
-		logger.debug("Initial matrix: \n"+matrixToString());
+//		logger.debug("Initial matrix: \n"+matrixToString());
 
 
 		for (int m=0;m<numItems-1;m++) {
@@ -293,14 +293,14 @@ public class SingleLinkageClusterer {
 					Set<Integer> firstCluster = clusters.get(firstClusterId);
 					Set<Integer> secondCluster = clusters.get(secondClusterId);
 					if (firstCluster.size()<secondCluster.size()) {
-						logger.debug("Joining cluster "+firstClusterId+" to cluster "+secondClusterId);
+//						logger.debug("Joining cluster "+firstClusterId+" to cluster "+secondClusterId);
 						// we join first onto second
 						for (int member : firstCluster) {
 							secondCluster.add(member);
 						}
 						clusters.remove(firstClusterId);
 					} else {
-						logger.debug("Joining cluster "+secondClusterId+" to cluster "+firstClusterId);
+//						logger.debug("Joining cluster "+secondClusterId+" to cluster "+firstClusterId);
 						// we join second onto first
 						for (int member : secondCluster) {
 							firstCluster.add(member);
@@ -309,11 +309,11 @@ public class SingleLinkageClusterer {
 					}
 				}
 
-				logger.debug("Within cutoff:     "+dendrogram[i]);
+//				logger.debug("Within cutoff:     "+dendrogram[i]);
 
 			} else {
 
-				logger.debug("Not within cutoff: "+dendrogram[i]);
+//				logger.debug("Not within cutoff: "+dendrogram[i]);
 
 			}
 		}
@@ -344,7 +344,7 @@ public class SingleLinkageClusterer {
 
 		}
 
-		logger.debug("Clusters: \n"+clustersToString(finalClusters));
+//		logger.debug("Clusters: \n"+clustersToString(finalClusters));
 
 		return finalClusters;
 	}

@@ -48,8 +48,8 @@ import org.biojava.nbio.core.sequence.location.template.Location;
 import org.biojava.nbio.core.sequence.template.AbstractSequence;
 import org.biojava.nbio.core.sequence.template.Compound;
 import org.biojava.nbio.core.sequence.template.CompoundSet;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -74,7 +74,7 @@ public class GenbankSequenceParser<S extends AbstractSequence<C>, C extends Comp
 	 */
 	private HashMap<String, ArrayList<AbstractFeature>> featureCollection;
 
-	private Logger log = LoggerFactory.getLogger(getClass());
+//	private Logger log = LoggerFactory.getLogger(getClass());
 
 	// this is a compoundset parsed from header.
 	private CompoundSet<?> compoundType;
@@ -177,7 +177,7 @@ public class GenbankSequenceParser<S extends AbstractSequence<C>, C extends Comp
 						}
 					}
 
-					log.debug("compound type: {}", compoundType.getClass().getSimpleName());
+//					log.debug("compound type: {}", compoundType.getClass().getSimpleName());
 
 				} else {
 					throw new ParserException("Bad locus line");
@@ -296,7 +296,7 @@ public class GenbankSequenceParser<S extends AbstractSequence<C>, C extends Comp
 				//TODO
 			} else {
 				if(!sectionKey.equals(END_SEQUENCE_TAG)) {
-					log.info("found unknown section key: "+sectionKey);
+//					log.info("found unknown section key: "+sectionKey);
 				}
 			}
 		} while (!sectionKey.equals(END_SEQUENCE_TAG));

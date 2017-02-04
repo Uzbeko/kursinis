@@ -29,8 +29,8 @@ import org.biojava.nbio.core.sequence.compound.RNACompoundSet;
 import org.biojava.nbio.core.sequence.template.Compound;
 import org.biojava.nbio.core.sequence.template.CompoundSet;
 import org.biojava.nbio.core.sequence.template.Sequence;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -39,7 +39,7 @@ import java.util.zip.GZIPInputStream;
 
 public class IOUtils {
 
-	private static final Logger logger = LoggerFactory.getLogger(IOUtils.class);
+//	private static final Logger logger = LoggerFactory.getLogger(IOUtils.class);
 
 	private static final int BUFFER = 4096;
 
@@ -56,7 +56,7 @@ public class IOUtils {
 				c.close();
 			}
 		} catch (IOException e) {
-			logger.warn("Cannot close down the given Closeable object", e);
+//			logger.warn("Cannot close down the given Closeable object", e);
 		}
 	}
 
@@ -157,7 +157,7 @@ public class IOUtils {
 	 *
 	 * @param file File which may or may not be GZipped
 	 * @return The final stream
-	 * @throws IOExceptio n
+//	 * @throws IOExceptio n
 	 */
 	public static InputStream openFile(File file) throws IOException {
 		final InputStream is;
@@ -178,7 +178,7 @@ public class IOUtils {
 
 	/**
 	 * Closure interface used when working with
-	 * {@link IOUtils#processReader(String)}. Each time a line is encountered
+//	 * {@link IOUtils#processReader(String)}. Each time a line is encountered
 	 * the object that implements this interface will be invoked.
 	 *
 	 * @author ayates

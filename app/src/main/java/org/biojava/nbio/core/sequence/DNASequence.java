@@ -31,8 +31,8 @@ import org.biojava.nbio.core.sequence.transcription.Frame;
 import org.biojava.nbio.core.sequence.transcription.TranscriptionEngine;
 import org.biojava.nbio.core.sequence.views.ComplementSequenceView;
 import org.biojava.nbio.core.sequence.views.ReversedSequenceView;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
 
 /**
  * This is class should model the attributes associated with a DNA sequence
@@ -41,7 +41,7 @@ import org.slf4j.LoggerFactory;
  */
 public class DNASequence extends AbstractSequence<NucleotideCompound> {
 
-	private final static Logger logger = LoggerFactory.getLogger(DNASequence.class);
+//	private final static Logger logger = LoggerFactory.getLogger(DNASequence.class);
 /**
  * The type of DNA sequence
  */
@@ -169,11 +169,11 @@ public class DNASequence extends AbstractSequence<NucleotideCompound> {
 
 	public static void main(String[] args) throws Exception {
 		DNASequence dnaSequence = new DNASequence("ATCG");
-		logger.info("DNA Sequence: {}", dnaSequence.toString());
+//		logger.info("DNA Sequence: {}", dnaSequence.toString());
 
 		StringProxySequenceReader<NucleotideCompound> sequenceStringProxyLoader =
 				new StringProxySequenceReader<NucleotideCompound>("GCTA", DNACompoundSet.getDNACompoundSet());
 		DNASequence dnaSequenceFromProxy = new DNASequence(sequenceStringProxyLoader);
-		logger.info("DNA Sequence from Proxy: {}", dnaSequenceFromProxy.toString());
+//		logger.info("DNA Sequence from Proxy: {}", dnaSequenceFromProxy.toString());
 	}
 }

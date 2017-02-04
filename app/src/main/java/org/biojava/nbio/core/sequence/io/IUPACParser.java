@@ -81,10 +81,12 @@ public class IUPACParser {
 	}
 
 	public static IUPACParser getInstance() {
+		InputStream te = new ClasspathResource(IUPAC_LOCATION, true).getInputStream();
 		return IOD.INSTANCE;
 	}
 
-	public static final String      IUPAC_LOCATION = "org/biojava/nbio/core/sequence/iupac.txt";
+//	public static final String      IUPAC_LOCATION = "org/biojava/nbio/core/sequence/iupac.txt";
+	public static final String      IUPAC_LOCATION = "/home/edvinas/AndroidStudioProjects/Biojava/app/src/main/java/org/biojava/nbio/core/sequence/iupac.txt";
 
 	private InputStream              is;
 	private List<IUPACTable>         tables;
@@ -261,7 +263,7 @@ public class IUPACParser {
 		 * Returns a list of codons where the source and target compounds
 		 * are the same as those given by the parameters.
 		 *
-		 * @param nucleotides The nucleotide set to use when building BioJava
+//		 * @param nucleotides The nucleotide set to use when building BioJava
 		 * representations of codons
 		 * @param aminoAcids The target amino acid compounds objects
 		 */

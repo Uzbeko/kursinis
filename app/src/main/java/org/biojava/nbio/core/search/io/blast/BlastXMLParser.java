@@ -36,7 +36,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.xpath.XPathException;
 import org.biojava.nbio.core.sequence.template.Sequence;
 import org.biojava.nbio.core.util.XMLHelper;
-import org.slf4j.LoggerFactory;
+//import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.xml.sax.SAXException;
@@ -53,7 +53,7 @@ import org.xml.sax.SAXException;
  * @author Paolo Pavan
  */
 public class BlastXMLParser implements ResultFactory {
-	private static final org.slf4j.Logger logger = LoggerFactory.getLogger(Hsp.class);
+//	private static final org.slf4j.Logger logger = LoggerFactory.getLogger(Hsp.class);
 	Document blastDoc = null;
 	private File targetFile;
 	private List<Sequence> queryReferences, databaseReferences;
@@ -68,17 +68,17 @@ public class BlastXMLParser implements ResultFactory {
 	}
 
 	private void readFile(String blastFile) throws IOException, ParseException{
-		logger.info("Start reading " + blastFile);
+//		logger.info("Start reading " + blastFile);
 		try {
 			blastDoc = XMLHelper.loadXML(blastFile);
 		} catch (SAXException ex) {
-			logger.error("A parsing error has occurred while reading XML blast file");
+//			logger.error("A parsing error has occurred while reading XML blast file");
 			throw new ParseException(ex.getMessage(),0);
 		} catch (ParserConfigurationException ex) {
-			logger.error("Internal XML parser non properly configured");
+//			logger.error("Internal XML parser non properly configured");
 			throw new ParseException(ex.getMessage(),0);
 		}
-		logger.info("Read finished");
+//		logger.info("Read finished");
 	}
 
 	@Override
@@ -101,9 +101,9 @@ public class BlastXMLParser implements ResultFactory {
 			String reference = XMLHelper.selectSingleElement(blastDoc.getDocumentElement(),"BlastOutput_reference").getTextContent();
 			String dbFile = XMLHelper.selectSingleElement(blastDoc.getDocumentElement(),"BlastOutput_db").getTextContent();
 
-			logger.info("Query for hits in "+ targetFile);
+//			logger.info("Query for hits in "+ targetFile);
 			ArrayList<Element> IterationsList = XMLHelper.selectElements(blastDoc.getDocumentElement(), "BlastOutput_iterations/Iteration[Iteration_hits]");
-			logger.info(IterationsList.size() + " results");
+//			logger.info(IterationsList.size() + " results");
 
 			resultsCollection = new ArrayList<Result>();
 			for (Element element : IterationsList) {
@@ -188,7 +188,7 @@ public class BlastXMLParser implements ResultFactory {
 		} catch (XPathException e) {
 			throw new ParseException(e.getMessage(),0);
 		}
-		logger.info("Parsing of "+targetFile+" finished.");
+//		logger.info("Parsing of "+targetFile+" finished.");
 
 		return resultsCollection;
 	}

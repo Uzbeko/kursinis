@@ -25,8 +25,8 @@ package org.biojava.nbio.core.sequence;
 import org.biojava.nbio.core.exceptions.CompoundNotFoundException;
 import org.biojava.nbio.core.sequence.compound.DNACompoundSet;
 import org.biojava.nbio.core.sequence.transcription.TranscriptionEngine;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -39,7 +39,7 @@ import java.util.LinkedHashMap;
  */
 public class TranscriptSequence extends DNASequence {
 
-	private final static Logger logger = LoggerFactory.getLogger(TranscriptSequence.class);
+//	private final static Logger logger = LoggerFactory.getLogger(TranscriptSequence.class);
 
 	private final ArrayList<CDSSequence> cdsSequenceList = new ArrayList<CDSSequence>();
 	private final LinkedHashMap<String, CDSSequence> cdsSequenceHashMap = new LinkedHashMap<String, CDSSequence>();
@@ -184,7 +184,7 @@ public class TranscriptSequence extends DNASequence {
 				dnaCodingSequence = new DNASequence(codingSequence.toUpperCase());
 			} catch (CompoundNotFoundException e) {
 				// if I understand this should not happen, please correct if I'm wrong - JD 2014-10-24
-				logger.error("Could not create DNA coding sequence, {}. This is most likely a bug.", e.getMessage());
+//				logger.error("Could not create DNA coding sequence, {}. This is most likely a bug.", e.getMessage());
 			}
 			RNASequence rnaCodingSequence = dnaCodingSequence.getRNASequence(TranscriptionEngine.getDefault());
 			ProteinSequence proteinSequence = rnaCodingSequence.getProteinSequence(TranscriptionEngine.getDefault());
@@ -210,7 +210,7 @@ public class TranscriptSequence extends DNASequence {
 			dnaSequence = new DNASequence(sb.toString().toUpperCase());
 		} catch (CompoundNotFoundException e) {
 			// if I understand this should not happen, please correct if I'm wrong - JD 2014-10-24
-			logger.error("Could not create DNA coding sequence, {}. This is most likely a bug.", e.getMessage());
+//			logger.error("Could not create DNA coding sequence, {}. This is most likely a bug.", e.getMessage());
 		}
 		dnaSequence.setAccession(new AccessionID(this.getAccession().getID()));
 		return dnaSequence;
@@ -246,7 +246,7 @@ public class TranscriptSequence extends DNASequence {
 	}
 
 	/**
-	 * @param startCodonSequence the startCodonSequence to set
+//	 * @param startCodonSequence the startCodonSequence to set
 	 */
 	public void addStartCodonSequence(AccessionID accession, int begin, int end) {
 		this.startCodonSequence = new StartCodonSequence(this, begin, end);
@@ -261,7 +261,7 @@ public class TranscriptSequence extends DNASequence {
 	}
 
 	/**
-	 * @param stopCodonSequence the stopCodonSequence to set
+//	 * @param stopCodonSequence the stopCodonSequence to set
 	 */
 	public void addStopCodonSequence(AccessionID accession, int begin, int end) {
 		this.stopCodonSequence = new StopCodonSequence(this, begin, end);

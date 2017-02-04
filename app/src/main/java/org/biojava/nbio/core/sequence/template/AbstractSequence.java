@@ -37,8 +37,8 @@ import org.biojava.nbio.core.sequence.location.SequenceLocation;
 import org.biojava.nbio.core.sequence.location.SimpleLocation;
 import org.biojava.nbio.core.sequence.location.template.Location;
 import org.biojava.nbio.core.sequence.storage.ArrayListSequenceReader;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
 
 import java.util.*;
 
@@ -49,7 +49,7 @@ import java.util.*;
  */
 public abstract class AbstractSequence<C extends Compound> implements Sequence<C> {
 
-	private final static Logger logger = LoggerFactory.getLogger(AbstractSequence.class);
+//	private final static Logger logger = LoggerFactory.getLogger(AbstractSequence.class);
 
 	private TaxonomyID taxonomy;
 	private AccessionID accession;
@@ -157,7 +157,7 @@ public abstract class AbstractSequence<C extends Compound> implements Sequence<C
 	}
 
 	/**
-	 * @param bioBegin the bioBegin to set
+//	 * @param bioBegin the bioBegin to set
 	 */
 	public void setBioBegin(Integer begin) {
 		this.bioBegin = begin;
@@ -175,7 +175,7 @@ public abstract class AbstractSequence<C extends Compound> implements Sequence<C
 	}
 
 	/**
-	 * @param bioEnd the bioEnd to set
+//	 * @param bioEnd the bioEnd to set
 	 */
 	public void setBioEnd(Integer end) {
 		this.bioEnd = end;
@@ -207,7 +207,7 @@ public abstract class AbstractSequence<C extends Compound> implements Sequence<C
 	}
 
 	/**
-	 * @param annotation the annotation to set
+//	 * @param annotation the annotation to set
 	 */
 	public void setAnnotationType(AnnotationType annotationType) {
 		this.annotationType = annotationType;
@@ -342,7 +342,7 @@ public abstract class AbstractSequence<C extends Compound> implements Sequence<C
 
 	/**
 	 * Return features at a sequence position
-	 * @param featureType
+//	 * @param featureType
 	 * @param bioSequencePosition
 	 * @return
 	 */
@@ -493,7 +493,7 @@ public abstract class AbstractSequence<C extends Compound> implements Sequence<C
 	}
 
 	/**
-	 * @param species the species to set
+//	 * @param species the species to set
 	 */
 	public void setTaxonomy(TaxonomyID taxonomy) {
 		this.taxonomy = taxonomy;
@@ -540,7 +540,7 @@ public abstract class AbstractSequence<C extends Compound> implements Sequence<C
 					sequenceStorage.setContents(parentSequence.getSequenceAsString());
 				} catch (CompoundNotFoundException e) {
 					// TODO is there a better way to handle this exception?
-					logger.error("Problem setting contents from parent sequence, some unrecognised compound: {}",e.getMessage());
+//					logger.error("Problem setting contents from parent sequence, some unrecognised compound: {}",e.getMessage());
 				}
 				return sequenceStorage;
 			}
@@ -552,8 +552,8 @@ public abstract class AbstractSequence<C extends Compound> implements Sequence<C
 
 	/**
 	 *
-	 * @param begin
-	 * @param end
+//	 * @param begin
+//	 * @param end
 	 * @param strand
 	 * @return
 	 */

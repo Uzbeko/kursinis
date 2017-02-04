@@ -30,8 +30,8 @@ import org.biojava.nbio.core.sequence.io.template.SequenceHeaderParserInterface;
 import org.biojava.nbio.core.sequence.template.AbstractSequence;
 import org.biojava.nbio.core.sequence.template.AbstractSequence.AnnotationType;
 import org.biojava.nbio.core.sequence.template.Compound;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 
@@ -62,7 +62,7 @@ import java.util.ArrayList;
  */
 public class GenericFastaHeaderParser<S extends AbstractSequence<C>, C extends Compound> implements SequenceHeaderParserInterface<S,C> {
 
-	private final static Logger logger = LoggerFactory.getLogger(GenericFastaHeaderParser.class);
+//	private final static Logger logger = LoggerFactory.getLogger(GenericFastaHeaderParser.class);
 
 	/**
 	 * Parse out the components where some have a | and others do not
@@ -177,86 +177,86 @@ public class GenericFastaHeaderParser<S extends AbstractSequence<C>, C extends C
 	 */
 	public static void main(String[] args) {
 
-		logger.info("parseHeader");
+//		logger.info("parseHeader");
 		String header = "";
 		ProteinSequence sequence = null;
 		try {
 			sequence = new ProteinSequence("");
 		} catch (CompoundNotFoundException e) {
 			// this should not happen, in case it does we log error
-			logger.error("Could not create empty protein sequence. Error: {}. This is most likely a bug.",e.getMessage());
+//			logger.error("Could not create empty protein sequence. Error: {}. This is most likely a bug.",e.getMessage());
 		}
 		GenericFastaHeaderParser<ProteinSequence,AminoAcidCompound> instance =
 		  new GenericFastaHeaderParser<ProteinSequence,AminoAcidCompound>();
 
 		header = "gi|gi-number|gb|accession|locus";
 		instance.parseHeader(header, sequence);
-		logger.info("accession = {}", sequence.getAccession());
-		logger.info("Data source: {} = {}", sequence.getAccession().getDataSource(), DataSource.GENBANK);
+//		logger.info("accession = {}", sequence.getAccession());
+//		logger.info("Data source: {} = {}", sequence.getAccession().getDataSource(), DataSource.GENBANK);
 
 		header = "gi|gi-number|emb|accession|locus";
 		instance.parseHeader(header, sequence);
-		logger.info("accession = {}", sequence.getAccession());
-		logger.info("Data source: {} = {}", sequence.getAccession().getDataSource(), DataSource.ENA);
+//		logger.info("accession = {}", sequence.getAccession());
+//		logger.info("Data source: {} = {}", sequence.getAccession().getDataSource(), DataSource.ENA);
 
 		header = "gi|gi-number|dbj|accession|locus";
 		instance.parseHeader(header, sequence);
-		logger.info("accession = {}", sequence.getAccession());
-		logger.info("Data source: {} = {}", sequence.getAccession().getDataSource(), DataSource.DDBJ);
+//		logger.info("accession = {}", sequence.getAccession());
+//		logger.info("Data source: {} = {}", sequence.getAccession().getDataSource(), DataSource.DDBJ);
 
 		header = "pir||entry";
 		instance.parseHeader(header, sequence);
-		logger.info("entry = {}", sequence.getAccession());
-		logger.info("Data source: {} = {}", sequence.getAccession().getDataSource(), DataSource.NBRF);
+//		logger.info("entry = {}", sequence.getAccession());
+//		logger.info("Data source: {} = {}", sequence.getAccession().getDataSource(), DataSource.NBRF);
 
 		header = "prf||name";
 		instance.parseHeader(header, sequence);
-		logger.info("name = {}", sequence.getAccession());
-		logger.info("Data source: {}", sequence.getAccession().getDataSource(), DataSource.PRF);
+//		logger.info("name = {}", sequence.getAccession());
+//		logger.info("Data source: {}", sequence.getAccession().getDataSource(), DataSource.PRF);
 
 		header = "sp|accession|name";
 		instance.parseHeader(header, sequence);
-		logger.info("accession = ", sequence.getAccession());
-		logger.info("Data source: {} = {}", sequence.getAccession().getDataSource(), DataSource.UNIPROT);
+//		logger.info("accession = ", sequence.getAccession());
+//		logger.info("Data source: {} = {}", sequence.getAccession().getDataSource(), DataSource.UNIPROT);
 
 		header = "pdb|entry|chain";
 		instance.parseHeader(header, sequence);
-		logger.info("entry:chain = ", sequence.getAccession());
-		logger.info("Data source: {} = {}", sequence.getAccession().getDataSource(), DataSource.PDB1);
+//		logger.info("entry:chain = ", sequence.getAccession());
+//		logger.info("Data source: {} = {}", sequence.getAccession().getDataSource(), DataSource.PDB1);
 
 		header = "entry:chain|PDBID|CHAIN|SEQUENCE";
 		instance.parseHeader(header, sequence);
-		logger.info("entry:chain = {}", sequence.getAccession());
-		logger.info("Data source: {} = {}", sequence.getAccession().getDataSource(), DataSource.PDB2);
+//		logger.info("entry:chain = {}", sequence.getAccession());
+//		logger.info("Data source: {} = {}", sequence.getAccession().getDataSource(), DataSource.PDB2);
 
 		header = "PDB:1ECY_A mol:protein length:142  ECOTIN";
 		instance.parseHeader(header, sequence);
-		logger.info("1ECY_A = {}", sequence.getAccession());
-		logger.info("Data source: {} = {}", sequence.getAccession().getDataSource(), DataSource.PDBe);
+//		logger.info("1ECY_A = {}", sequence.getAccession());
+//		logger.info("Data source: {} = {}", sequence.getAccession().getDataSource(), DataSource.PDBe);
 
 		header = "pat|country|number";
 		instance.parseHeader(header, sequence);
-		logger.info("number = {}", sequence.getAccession());
-		logger.info("Data source: {}", sequence.getAccession().getDataSource(), DataSource.PATENTS);
+//		logger.info("number = {}", sequence.getAccession());
+//		logger.info("Data source: {}", sequence.getAccession().getDataSource(), DataSource.PATENTS);
 
 		header = "bbs|number";
 		instance.parseHeader(header, sequence);
-		logger.info("number = {}", sequence.getAccession());
-		logger.info("Data source: {} = {}", sequence.getAccession().getDataSource(), DataSource.GENINFO);
+//		logger.info("number = {}", sequence.getAccession());
+//		logger.info("Data source: {} = {}", sequence.getAccession().getDataSource(), DataSource.GENINFO);
 
 		header = "gnl|database|identifier";
 		instance.parseHeader(header, sequence);
-		logger.info("identifier = {}", sequence.getAccession());
-		logger.info("Data source: {} = {}", sequence.getAccession().getDataSource(), DataSource.GENERAL);
+//		logger.info("identifier = {}", sequence.getAccession());
+//		logger.info("Data source: {} = {}", sequence.getAccession().getDataSource(), DataSource.GENERAL);
 
 		header = "ref|accession|locus";
 		instance.parseHeader(header, sequence);
-		logger.info("accession = {}", sequence.getAccession());
-		logger.info("Data source: {} = {}", sequence.getAccession().getDataSource(), DataSource.NCBI);
+//		logger.info("accession = {}", sequence.getAccession());
+//		logger.info("Data source: {} = {}", sequence.getAccession().getDataSource(), DataSource.NCBI);
 
 		header = "lcl|identifier";
 		instance.parseHeader(header, sequence);
-		logger.info("identifier = {}", sequence.getAccession());
-		logger.info("Data source: {} = {}", sequence.getAccession().getDataSource(), DataSource.LOCAL);
+//		logger.info("identifier = {}", sequence.getAccession());
+//		logger.info("Data source: {} = {}", sequence.getAccession().getDataSource(), DataSource.LOCAL);
 	}
 }

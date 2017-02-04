@@ -21,6 +21,8 @@
  */
 package org.biojava.nbio.core.sequence.transcription;
 
+import org.biojava.MyApplication;
+import org.biojava.R;
 import org.biojava.nbio.core.sequence.compound.*;
 import org.biojava.nbio.core.sequence.io.IUPACParser;
 import org.biojava.nbio.core.sequence.io.IUPACParser.IUPACTable;
@@ -31,6 +33,7 @@ import org.biojava.nbio.core.sequence.template.CompoundSet;
 import org.biojava.nbio.core.sequence.template.Sequence;
 import org.biojava.nbio.core.sequence.transcription.Table.Codon;
 
+import java.io.InputStream;
 import java.util.EnumMap;
 import java.util.Map;
 
@@ -170,7 +173,7 @@ public class TranscriptionEngine {
 	}
 
 	/**
-	 * This class is the way to create a {@link TranslationEngine}.
+//	 * This class is the way to create a {@link TranslationEngine}.
 	 */
 	public static class Builder {
 
@@ -209,6 +212,9 @@ public class TranscriptionEngine {
 		 * {@link IUPACTable}s by ID.
 		 */
 		public Builder table(Integer id) {
+			InputStream classpathIs = getClass().getClassLoader().getResourceAsStream("org/biojava/nbio/core/sequence/iupac.txt");
+//			InputStream classpathIs = MyApplication.getAppContext().getResources().openRawResource(R.raw.iupac);
+
 			table = IUPACParser.getInstance().getTable(id);
 			return this;
 		}

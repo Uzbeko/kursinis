@@ -25,8 +25,8 @@ import org.biojava.nbio.core.sequence.BasicSequence;
 import org.biojava.nbio.core.sequence.storage.JoiningSequenceReader;
 import org.biojava.nbio.core.sequence.template.Compound;
 import org.biojava.nbio.core.sequence.template.Sequence;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,7 +60,7 @@ public interface Edit<C extends Compound> {
 	 */
 	public static abstract class AbstractEdit<C extends Compound> implements Edit<C> {
 
-		private final static Logger logger = LoggerFactory.getLogger(AbstractEdit.class);
+//		private final static Logger logger = LoggerFactory.getLogger(AbstractEdit.class);
 
 		/**
 		 * Should return the 5-prime end of the given Sequence according to
@@ -123,7 +123,7 @@ public interface Edit<C extends Compound> {
 								stringSequence, editingSequence.getCompoundSet());
 				} catch (CompoundNotFoundException e) {
 					// TODO is there a better way to handle this exception?
-					logger.error("Problem setting sequence, some unrecognised compounds: {}", e.getMessage());
+//					logger.error("Problem setting sequence, some unrecognised compounds: {}", e.getMessage());
 				}
 			}
 			return sequence;
@@ -139,7 +139,7 @@ public interface Edit<C extends Compound> {
 				s = new BasicSequence<C>("", editingSequence.getCompoundSet());
 			} catch (CompoundNotFoundException e) {
 				// should not happen
-				logger.error("Could not construct empty sequence. {}. This is most likely a bug.", e.getMessage());
+//				logger.error("Could not construct empty sequence. {}. This is most likely a bug.", e.getMessage());
 			}
 			return s;
 		}

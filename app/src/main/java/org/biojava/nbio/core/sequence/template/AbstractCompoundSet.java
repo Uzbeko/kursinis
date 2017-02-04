@@ -23,8 +23,8 @@ package org.biojava.nbio.core.sequence.template;
 
 import org.biojava.nbio.core.util.Equals;
 import org.biojava.nbio.core.util.Hashcoder;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
 
 import java.util.*;
 
@@ -37,7 +37,7 @@ import java.util.*;
  */
 public abstract class AbstractCompoundSet<C extends Compound> implements CompoundSet<C> {
 
-	private final static Logger logger = LoggerFactory.getLogger(AbstractCompoundSet.class);
+//	private final static Logger logger = LoggerFactory.getLogger(AbstractCompoundSet.class);
 
 	private Map<CharSequence, C> charSeqToCompound = new HashMap<CharSequence, C>();
 	private int maxCompoundCharSequenceLength = -1;
@@ -177,7 +177,7 @@ public List<C> getAllCompounds() {
 		if (!hasCompound(compound)) {
 			// TODO this used to throw an error, now only warning, is this the best solution?
 				// dmyersturnbull: I think throwing a CompoundNotFoundException is far better
-			logger.warn("The CompoundSet {} knows nothing about the compound {}", getClass().getSimpleName(), compound);
+//			logger.warn("The CompoundSet {} knows nothing about the compound {}", getClass().getSimpleName(), compound);
 			//throw new CompoundNotFoundError("The CompoundSet "+
 			//    getClass().getSimpleName()+" knows nothing about the compound "+
 			//    compound);

@@ -24,6 +24,8 @@
  */
 package org.biojava.nbio.core.sequence.loader;
 
+import android.os.RemoteException;
+
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.File;
@@ -34,7 +36,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.rmi.RemoteException;
+//import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -62,8 +64,8 @@ import org.biojava.nbio.core.sequence.template.SequenceMixin;
 import org.biojava.nbio.core.sequence.template.SequenceProxyView;
 import org.biojava.nbio.core.sequence.template.SequenceView;
 import org.biojava.nbio.core.util.XMLHelper;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.xml.sax.SAXException;
@@ -79,7 +81,7 @@ import org.xml.sax.SAXException;
  */
 public class UniprotProxySequenceReader<C extends Compound> implements ProxySequenceReader<C>, FeaturesKeyWordInterface, DatabaseReferenceInterface {
 
-	private final static Logger logger = LoggerFactory.getLogger(UniprotProxySequenceReader.class);
+//	private final static Logger logger = LoggerFactory.getLogger(UniprotProxySequenceReader.class);
 
 	/*
 	 * Taken from http://www.uniprot.org/help/accession_numbers
@@ -140,7 +142,7 @@ public class UniprotProxySequenceReader<C extends Compound> implements ProxySequ
 			Document document = XMLHelper.inputStreamToDocument(new ByteArrayInputStream(xml.getBytes()));
 			return new UniprotProxySequenceReader<C>(document, compoundSet);
 		} catch (Exception e) {
-			logger.error("Exception on xml parse of: {}", xml);
+//			logger.error("Exception on xml parse of: {}", xml);
 		}
 		return null;
 	}
@@ -309,7 +311,7 @@ public class UniprotProxySequenceReader<C extends Compound> implements ProxySequ
 			Element nameElement = XMLHelper.selectSingleElement(entryElement, "name");
 			accessionID = new AccessionID(nameElement.getTextContent(), DataSource.UNIPROT);
 		} catch (XPathExpressionException e) {
-			logger.error("Exception: ", e);
+//			logger.error("Exception: ", e);
 		}
 		return accessionID;
 	}
@@ -427,8 +429,8 @@ public class UniprotProxySequenceReader<C extends Compound> implements ProxySequ
 		// http://www.uniprot.org/uniprot/?query=SORBIDRAFT_03g027040&format=xml
 		if (sb.length() == 0) {
 			String uniprotURL = getUniprotbaseURL() + "/uniprot/" + accession.toUpperCase() + ".xml";
-			logger.info("Loading: {}", uniprotURL);
-			sb = fetchUniprotXML(uniprotURL);
+//			logger.info("Loading: {}", uniprotURL);
+//			sb = fetchUniprotXML(uniprotURL);
 
 			int index = sb.indexOf("xmlns="); //strip out name space stuff to make it easier on xpath
 			if (index != -1) {
@@ -439,15 +441,15 @@ public class UniprotProxySequenceReader<C extends Compound> implements ProxySequ
 				writeCache(sb,accession);
 		}
 
-		logger.info("Load complete");
+//		logger.info("Load complete");
 		try {
 			//       logger.debug(sb.toString());
 			Document document = XMLHelper.inputStreamToDocument(new ByteArrayInputStream(sb.toString().getBytes()));
 			return document;
 		} catch (SAXException e) {
-			logger.error("Exception on xml parse of: {}", sb.toString());
+//			logger.error("Exception on xml parse of: {}", sb.toString());
 		} catch (ParserConfigurationException e) {
-			logger.error("Exception on xml parse of: {}", sb.toString());
+//			logger.error("Exception on xml parse of: {}", sb.toString());
 		}
 		return null;
 	}
@@ -460,7 +462,7 @@ public class UniprotProxySequenceReader<C extends Compound> implements ProxySequ
 	}
 
 	private StringBuilder fetchUniprotXML(String uniprotURL)
-			throws IOException, CompoundNotFoundException {
+			throws IOException, CompoundNotFoundException, RemoteException {
 
 		StringBuilder sb = new StringBuilder();
 		URL uniprot = new URL(uniprotURL);
@@ -486,7 +488,7 @@ public class UniprotProxySequenceReader<C extends Compound> implements ProxySequ
 			attempt--;
 			errorCodes.add(String.valueOf(statusCode));
 		}
-		throw new RemoteException("Couldn't fetch accession from the url " + uniprotURL + " error codes on 5 attempts are " + errorCodes.toString());
+		throw new RemoteException("Couldn't fetch accession from the url ");
 	}
 
 	/**
@@ -532,7 +534,7 @@ public class UniprotProxySequenceReader<C extends Compound> implements ProxySequ
 
 			return seqdata;
 		} catch (XPathExpressionException e) {
-			logger.error("Problems while parsing sequence in UniProt XML: {}. Sequence will be blank.", e.getMessage());
+//			logger.error("Problems while parsing sequence in UniProt XML: {}. Sequence will be blank.", e.getMessage());
 			return "";
 		}
 	}
@@ -577,10 +579,10 @@ public class UniprotProxySequenceReader<C extends Compound> implements ProxySequ
 		try {
 			UniprotProxySequenceReader<AminoAcidCompound> uniprotSequence = new UniprotProxySequenceReader<AminoAcidCompound>("YA745_GIBZE", AminoAcidCompoundSet.getAminoAcidCompoundSet());
 			ProteinSequence proteinSequence = new ProteinSequence(uniprotSequence);
-			logger.info("Accession: {}", proteinSequence.getAccession().getID());
-			logger.info("Sequence: {}", proteinSequence.getSequenceAsString());
+//			logger.info("Accession: {}", proteinSequence.getAccession().getID());
+//			logger.info("Sequence: {}", proteinSequence.getSequenceAsString());
 		} catch (Exception e) {
-			logger.error("Exception: ", e);
+//			logger.error("Exception: ", e);
 		}
 
 	}
@@ -606,7 +608,7 @@ public class UniprotProxySequenceReader<C extends Compound> implements ProxySequ
 			}
 			return nameElement.getTextContent();
 		} catch (XPathExpressionException e) {
-			logger.error("Problems while parsing gene name in UniProt XML: {}. Gene name will be blank.",e.getMessage());
+//			logger.error("Problems while parsing gene name in UniProt XML: {}. Gene name will be blank.",e.getMessage());
 			return "";
 		}
 	}
@@ -632,7 +634,7 @@ public class UniprotProxySequenceReader<C extends Compound> implements ProxySequ
 			}
 			return nameElement.getTextContent();
 		} catch (XPathExpressionException e) {
-			logger.error("Problems while parsing organism name in UniProt XML: {}. Organism name will be blank.",e.getMessage());
+//			logger.error("Problems while parsing organism name in UniProt XML: {}. Organism name will be blank.",e.getMessage());
 			return "";
 		}
 
@@ -657,7 +659,7 @@ public class UniprotProxySequenceReader<C extends Compound> implements ProxySequ
 				keyWordsList.add(element.getTextContent());
 			}
 		} catch (XPathExpressionException e) {
-			logger.error("Problems while parsing keywords in UniProt XML: {}. No keywords will be available.",e.getMessage());
+//			logger.error("Problems while parsing keywords in UniProt XML: {}. No keywords will be available.",e.getMessage());
 			return new ArrayList<String>();
 		}
 
@@ -698,7 +700,7 @@ public class UniprotProxySequenceReader<C extends Compound> implements ProxySequ
 				idlist.add(dbreferenceInfo);
 			}
 		} catch (XPathExpressionException e) {
-			logger.error("Problems while parsing db references in UniProt XML: {}. No db references will be available.",e.getMessage());
+//			logger.error("Problems while parsing db references in UniProt XML: {}. No db references will be available.",e.getMessage());
 			return new LinkedHashMap<String, ArrayList<DBReferenceInfo>>();
 		}
 

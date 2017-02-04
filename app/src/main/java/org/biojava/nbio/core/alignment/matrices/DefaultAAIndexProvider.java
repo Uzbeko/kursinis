@@ -22,8 +22,8 @@ package org.biojava.nbio.core.alignment.matrices;
 
 import org.biojava.nbio.core.alignment.template.SubstitutionMatrix;
 import org.biojava.nbio.core.sequence.compound.AminoAcidCompound;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -36,7 +36,7 @@ import java.util.Map;
  */
 public class DefaultAAIndexProvider implements AAIndexProvider {
 
-	private final static Logger logger = LoggerFactory.getLogger(DefaultAAIndexProvider.class);
+//	private final static Logger logger = LoggerFactory.getLogger(DefaultAAIndexProvider.class);
 
 	Map<String,SubstitutionMatrix<AminoAcidCompound>> matrices;
 
@@ -50,7 +50,7 @@ public class DefaultAAIndexProvider implements AAIndexProvider {
 		try {
 			parser.parse(inStream);
 		} catch (IOException e){
-			logger.error("Exception: ", e);
+//			logger.error("Exception: ", e);
 		}
 
 		matrices = parser.getMatrices();
