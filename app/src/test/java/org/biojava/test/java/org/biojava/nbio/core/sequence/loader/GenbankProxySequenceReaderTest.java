@@ -33,6 +33,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 //import org.slf4j.Logger;
 //import org.slf4j.LoggerFactory;
+//TODO sutvarkyti logerius kuriuos uzkomentavau
 
 import java.io.IOException;
 import java.util.ArrayList;
