@@ -168,6 +168,7 @@ public class DNASequence extends AbstractSequence<NucleotideCompound> {
 	}
 
 	public static void main(String[] args) throws Exception {
+//	public static void test()throws Exception{
 		DNASequence dnaSequence = new DNASequence("ATCG");
 //		logger.info("DNA Sequence: {}", dnaSequence.toString());
 
