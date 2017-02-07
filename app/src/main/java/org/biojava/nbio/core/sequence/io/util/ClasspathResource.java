@@ -113,7 +113,7 @@ public class ClasspathResource {
 		final InputStream is;
 		//pakeiciau source direktorija, nes androidas turi savo specifine!!!!!!!!!!!!!!!!!!!!!!!!
 //		final InputStream classpathIs = getClass().getClassLoader().getResourceAsStream(location);//senoji direktorija
-		final InputStream classpathIs = this.getClass().getClassLoader().getResourceAsStream(location);
+		final InputStream classpathIs = this.getClass().getClassLoader().getResourceAsStream(location);//nauja lokacija
 		if(classpathIs == null) {
 			throw new IllegalArgumentException("Location "+
 					location+" resulted in a null InputStream");
