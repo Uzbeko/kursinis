@@ -35,7 +35,7 @@ import org.junit.Test;
  *
  * @author Jacek Grzebyta
  * @author Paolo Pavan
- * @see InfoTask
+// * @see InfoTask
  */
 public class SimpleGenbankProxySequenceReaderTest {
 
