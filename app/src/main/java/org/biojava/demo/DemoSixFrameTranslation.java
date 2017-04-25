@@ -44,8 +44,8 @@ import java.util.Map;
  */
 public class DemoSixFrameTranslation {
 
-//	public static void main(String[] args){
-	public void test(){
+	public static void main(String[] args){
+//	public void test(){
 		String dnaFastaS = ">gb:GQ903697|Organism:Arenavirus H0030026 H0030026|Segment:S|Host:Rat\n" +
 				"CGCACAGAGGATCCTAGGCGTTACTGACTTGCGCTAATAACAGATACTGTTTCATATTTAGATAAAGACC\n" +
 				"CAGCCAACTGATTGGTCAGCATGGGACAACTTGTGTCCCTCTTCAGTGAAATTCCATCAATCATACACGA\n" +

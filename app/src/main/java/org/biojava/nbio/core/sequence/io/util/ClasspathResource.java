@@ -21,9 +21,12 @@
  */
 package org.biojava.nbio.core.sequence.io.util;
 
+import org.biojava.MyApplication;
+import org.biojava.R;
 import org.biojava.nbio.core.exceptions.ParserException;
 
 import java.io.*;
+import java.net.URL;
 import java.util.List;
 import java.util.zip.GZIPInputStream;
 
@@ -112,8 +115,147 @@ public class ClasspathResource {
 	private InputStream createClasspathInputStream() {
 		final InputStream is;
 		//pakeiciau source direktorija, nes androidas turi savo specifine!!!!!!!!!!!!!!!!!!!!!!!!
-//		final InputStream classpathIs = getClass().getClassLoader().getResourceAsStream(location);//senoji direktorija
-		final InputStream classpathIs = this.getClass().getClassLoader().getResourceAsStream(location);//nauja lokacija
+		final InputStream classpathIs = getClass().getClassLoader().getResourceAsStream(location);//senoji direktorija
+
+//-------------test-------------------------
+////		InputStream classpathIs = MyApplication.getAppContext().getResources().openRawResource(R.raw.iupac);
+////			System.out.print("asdf");
+//		String resource = "/home/edvinas/AndroidStudioProjects/Biojava/app/build/intermediates/sourceFolderJavaResources/test/debug/core/search/io/blast/small-blastreport.blastxml";
+//
+//		URL resourceURL = getClass().getResource(resource);
+//		File file = new File(resourceURL.getFile());
+//
+//
+//		InputStream inStream = ClasspathResource.class.getResourceAsStream("/iupac.txt");
+//
+//		String url = "org/biojava/nbio/core/sequence/iupac.txt";
+//
+//		final InputStream classpathIs = this.getClass().getResourceAsStream(url);//nauja lokacija
+////		final InputStream classpathIs = this.getClass().getClassLoader().getResourceAsStream(location);//nauja lokacija
+//		InputStream classpathIs = MyApplication.getAppContext().getResources().openRawResource(R.raw.iupac);
+//----------------test end----------------------
+		//Todo iharkodinau nes nezinau kaip paimti faila (sutvarkyti sita)
+//		String str = "UNIVERSAL=1\n" +
+//				"AAs    = FFLLSSSSYY**CC*WLLLLPPPPHHQQRRRRIIIMTTTTNNKKSSRRVVVVAAAADDEEGGGG\n" +
+//				"Starts = ---M---------------M---------------M----------------------------\n" +
+//				"Base1  = TTTTTTTTTTTTTTTTCCCCCCCCCCCCCCCCAAAAAAAAAAAAAAAAGGGGGGGGGGGGGGGG\n" +
+//				"Base2  = TTTTCCCCAAAAGGGGTTTTCCCCAAAAGGGGTTTTCCCCAAAAGGGGTTTTCCCCAAAAGGGG\n" +
+//				"Base3  = TCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAG\n" +
+//				"//\n" +
+//				"VERTEBRATE_MITOCHONDRIAL=2\n" +
+//				"AAs    = FFLLSSSSYY**CCWWLLLLPPPPHHQQRRRRIIMMTTTTNNKKSS**VVVVAAAADDEEGGGG\n" +
+//				"Starts = --------------------------------MMMM---------------M------------\n" +
+//				"Base1  = TTTTTTTTTTTTTTTTCCCCCCCCCCCCCCCCAAAAAAAAAAAAAAAAGGGGGGGGGGGGGGGG\n" +
+//				"Base2  = TTTTCCCCAAAAGGGGTTTTCCCCAAAAGGGGTTTTCCCCAAAAGGGGTTTTCCCCAAAAGGGG\n" +
+//				"Base3  = TCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAG\n" +
+//				"//\n" +
+//				"YEAST_MITOCHONDRIAL=3\n" +
+//				"AAs    = FFLLSSSSYY**CCWWTTTTPPPPHHQQRRRRIIMMTTTTNNKKSSRRVVVVAAAADDEEGGGG\n" +
+//				"Starts = ----------------------------------MM----------------------------\n" +
+//				"Base1  = TTTTTTTTTTTTTTTTCCCCCCCCCCCCCCCCAAAAAAAAAAAAAAAAGGGGGGGGGGGGGGGG\n" +
+//				"Base2  = TTTTCCCCAAAAGGGGTTTTCCCCAAAAGGGGTTTTCCCCAAAAGGGGTTTTCCCCAAAAGGGG\n" +
+//				"Base3  = TCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAG\n" +
+//				"//\n" +
+//				"MOLD_MITOCHONDRIAL=4\n" +
+//				"AAs    = FFLLSSSSYY**CCWWLLLLPPPPHHQQRRRRIIIMTTTTNNKKSSRRVVVVAAAADDEEGGGG\n" +
+//				"Starts = --MM---------------M------------MMMM---------------M------------\n" +
+//				"Base1  = TTTTTTTTTTTTTTTTCCCCCCCCCCCCCCCCAAAAAAAAAAAAAAAAGGGGGGGGGGGGGGGG\n" +
+//				"Base2  = TTTTCCCCAAAAGGGGTTTTCCCCAAAAGGGGTTTTCCCCAAAAGGGGTTTTCCCCAAAAGGGG\n" +
+//				"Base3  = TCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAG\n" +
+//				"//\n" +
+//				"INVERTEBRATE_MITOCHONDRIAL=5\n" +
+//				"AAs    = FFLLSSSSYY**CCWWLLLLPPPPHHQQRRRRIIMMTTTTNNKKSSSSVVVVAAAADDEEGGGG\n" +
+//				"Starts = ---M----------------------------MMMM---------------M------------\n" +
+//				"Base1  = TTTTTTTTTTTTTTTTCCCCCCCCCCCCCCCCAAAAAAAAAAAAAAAAGGGGGGGGGGGGGGGG\n" +
+//				"Base2  = TTTTCCCCAAAAGGGGTTTTCCCCAAAAGGGGTTTTCCCCAAAAGGGGTTTTCCCCAAAAGGGG\n" +
+//				"Base3  = TCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAG\n" +
+//				"//\n" +
+//				"CILIATE_NUCLEAR=6\n" +
+//				"AAs    = FFLLSSSSYYQQCC*WLLLLPPPPHHQQRRRRIIIMTTTTNNKKSSRRVVVVAAAADDEEGGGG\n" +
+//				"Starts = -----------------------------------M----------------------------\n" +
+//				"Base1  = TTTTTTTTTTTTTTTTCCCCCCCCCCCCCCCCAAAAAAAAAAAAAAAAGGGGGGGGGGGGGGGG\n" +
+//				"Base2  = TTTTCCCCAAAAGGGGTTTTCCCCAAAAGGGGTTTTCCCCAAAAGGGGTTTTCCCCAAAAGGGG\n" +
+//				"Base3  = TCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAG\n" +
+//				"//\n" +
+//				"ECHINODERM_MITOCHONDRIAL=9\n" +
+//				"AAs    = FFLLSSSSYY**CCWWLLLLPPPPHHQQRRRRIIIMTTTTNNNKSSSSVVVVAAAADDEEGGGG\n" +
+//				"Starts = -----------------------------------M---------------M------------\n" +
+//				"Base1  = TTTTTTTTTTTTTTTTCCCCCCCCCCCCCCCCAAAAAAAAAAAAAAAAGGGGGGGGGGGGGGGG\n" +
+//				"Base2  = TTTTCCCCAAAAGGGGTTTTCCCCAAAAGGGGTTTTCCCCAAAAGGGGTTTTCCCCAAAAGGGG\n" +
+//				"Base3  = TCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAG\n" +
+//				"//\n" +
+//				"EUPLOTID_NUCLEAR=10\n" +
+//				"AAs    = FFLLSSSSYY**CCCWLLLLPPPPHHQQRRRRIIIMTTTTNNKKSSRRVVVVAAAADDEEGGGG\n" +
+//				"Starts = -----------------------------------M----------------------------\n" +
+//				"Base1  = TTTTTTTTTTTTTTTTCCCCCCCCCCCCCCCCAAAAAAAAAAAAAAAAGGGGGGGGGGGGGGGG\n" +
+//				"Base2  = TTTTCCCCAAAAGGGGTTTTCCCCAAAAGGGGTTTTCCCCAAAAGGGGTTTTCCCCAAAAGGGG\n" +
+//				"Base3  = TCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAG\n" +
+//				"//\n" +
+//				"BACTERIAL=11\n" +
+//				"AAs    = FFLLSSSSYY**CC*WLLLLPPPPHHQQRRRRIIIMTTTTNNKKSSRRVVVVAAAADDEEGGGG\n" +
+//				"Starts = ---M---------------M------------MMMM---------------M------------\n" +
+//				"Base1  = TTTTTTTTTTTTTTTTCCCCCCCCCCCCCCCCAAAAAAAAAAAAAAAAGGGGGGGGGGGGGGGG\n" +
+//				"Base2  = TTTTCCCCAAAAGGGGTTTTCCCCAAAAGGGGTTTTCCCCAAAAGGGGTTTTCCCCAAAAGGGG\n" +
+//				"Base3  = TCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAG\n" +
+//				"//\n" +
+//				"ALTERNATIVE_YEAST_NUCLEAR=12\n" +
+//				"AAs    = FFLLSSSSYY**CC*WLLLSPPPPHHQQRRRRIIIMTTTTNNKKSSRRVVVVAAAADDEEGGGG\n" +
+//				"Starts = -------------------M---------------M----------------------------\n" +
+//				"Base1  = TTTTTTTTTTTTTTTTCCCCCCCCCCCCCCCCAAAAAAAAAAAAAAAAGGGGGGGGGGGGGGGG\n" +
+//				"Base2  = TTTTCCCCAAAAGGGGTTTTCCCCAAAAGGGGTTTTCCCCAAAAGGGGTTTTCCCCAAAAGGGG\n" +
+//				"Base3  = TCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAG\n" +
+//				"//\n" +
+//				"ASCIDIAN_MITOCHONDRIAL=13\n" +
+//				"AAs    = FFLLSSSSYY**CCWWLLLLPPPPHHQQRRRRIIMMTTTTNNKKSSGGVVVVAAAADDEEGGGG\n" +
+//				"Starts = ---M------------------------------MM---------------M------------\n" +
+//				"Base1  = TTTTTTTTTTTTTTTTCCCCCCCCCCCCCCCCAAAAAAAAAAAAAAAAGGGGGGGGGGGGGGGG\n" +
+//				"Base2  = TTTTCCCCAAAAGGGGTTTTCCCCAAAAGGGGTTTTCCCCAAAAGGGGTTTTCCCCAAAAGGGG\n" +
+//				"Base3  = TCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAG\n" +
+//				"//\n" +
+//				"FLATWORM_MITOCHONDRIAL=14\n" +
+//				"AAs    = FFLLSSSSYYY*CCWWLLLLPPPPHHQQRRRRIIIMTTTTNNNKSSSSVVVVAAAADDEEGGGG\n" +
+//				"Starts = -----------------------------------M----------------------------\n" +
+//				"Base1  = TTTTTTTTTTTTTTTTCCCCCCCCCCCCCCCCAAAAAAAAAAAAAAAAGGGGGGGGGGGGGGGG\n" +
+//				"Base2  = TTTTCCCCAAAAGGGGTTTTCCCCAAAAGGGGTTTTCCCCAAAAGGGGTTTTCCCCAAAAGGGG\n" +
+//				"Base3  = TCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAG\n" +
+//				"//\n" +
+//				"BLEPHARISMA_MACRONUCLEAR=15\n" +
+//				"AAs    = FFLLSSSSYY*QCC*WLLLLPPPPHHQQRRRRIIIMTTTTNNKKSSRRVVVVAAAADDEEGGGG\n" +
+//				"Starts = -----------------------------------M----------------------------\n" +
+//				"Base1  = TTTTTTTTTTTTTTTTCCCCCCCCCCCCCCCCAAAAAAAAAAAAAAAAGGGGGGGGGGGGGGGG\n" +
+//				"Base2  = TTTTCCCCAAAAGGGGTTTTCCCCAAAAGGGGTTTTCCCCAAAAGGGGTTTTCCCCAAAAGGGG\n" +
+//				"Base3  = TCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAG\n" +
+//				"//\n" +
+//				"CHLOROPHYCEAN_MITOCHONDRIAL=16\n" +
+//				"AAs    = FFLLSSSSYY*LCC*WLLLLPPPPHHQQRRRRIIIMTTTTNNKKSSRRVVVVAAAADDEEGGGG\n" +
+//				"Starts = -----------------------------------M----------------------------\n" +
+//				"Base1  = TTTTTTTTTTTTTTTTCCCCCCCCCCCCCCCCAAAAAAAAAAAAAAAAGGGGGGGGGGGGGGGG\n" +
+//				"Base2  = TTTTCCCCAAAAGGGGTTTTCCCCAAAAGGGGTTTTCCCCAAAAGGGGTTTTCCCCAAAAGGGG\n" +
+//				"Base3  = TCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAG\n" +
+//				"//\n" +
+//				"TREMATODE_MITOCHONDRIAL=21\n" +
+//				"AAs    = FFLLSSSSYY**CCWWLLLLPPPPHHQQRRRRIIMMTTTTNNNKSSSSVVVVAAAADDEEGGGG\n" +
+//				"Starts = -----------------------------------M---------------M------------\n" +
+//				"Base1  = TTTTTTTTTTTTTTTTCCCCCCCCCCCCCCCCAAAAAAAAAAAAAAAAGGGGGGGGGGGGGGGG\n" +
+//				"Base2  = TTTTCCCCAAAAGGGGTTTTCCCCAAAAGGGGTTTTCCCCAAAAGGGGTTTTCCCCAAAAGGGG\n" +
+//				"Base3  = TCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAG\n" +
+//				"//\n" +
+//				"SCENEDESMUS_MITOCHONDRIAL=22\n" +
+//				"AAs    = FFLLSS*SYY*LCC*WLLLLPPPPHHQQRRRRIIIMTTTTNNKKSSRRVVVVAAAADDEEGGGG\n" +
+//				"Starts = -----------------------------------M----------------------------\n" +
+//				"Base1  = TTTTTTTTTTTTTTTTCCCCCCCCCCCCCCCCAAAAAAAAAAAAAAAAGGGGGGGGGGGGGGGG\n" +
+//				"Base2  = TTTTCCCCAAAAGGGGTTTTCCCCAAAAGGGGTTTTCCCCAAAAGGGGTTTTCCCCAAAAGGGG\n" +
+//				"Base3  = TCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAG\n" +
+//				"//\n" +
+//				"THRAUSTOCHYTRIUM_MITOCHONDRIAL=23\n" +
+//				"AAs    = FF*LSSSSYY**CC*WLLLLPPPPHHQQRRRRIIIMTTTTNNKKSSRRVVVVAAAADDEEGGGG\n" +
+//				"Starts = --------------------------------M--M---------------M------------\n" +
+//				"Base1  = TTTTTTTTTTTTTTTTCCCCCCCCCCCCCCCCAAAAAAAAAAAAAAAAGGGGGGGGGGGGGGGG\n" +
+//				"Base2  = TTTTCCCCAAAAGGGGTTTTCCCCAAAAGGGGTTTTCCCCAAAAGGGGTTTTCCCCAAAAGGGG\n" +
+//				"Base3  = TCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAG\n" +
+//				"//";
+//		InputStream classpathIs = new ByteArrayInputStream(str.getBytes());
+
 		if(classpathIs == null) {
 			throw new IllegalArgumentException("Location "+
 					location+" resulted in a null InputStream");

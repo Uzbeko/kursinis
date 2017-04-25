@@ -61,8 +61,7 @@ public class TranscriptionEngine {
 
 	private static final class IOD {
 
-		public static final TranscriptionEngine INSTANCE = new Builder()
-				.build();
+		public static final TranscriptionEngine INSTANCE = new Builder().build();
 	}
 
 	/**
@@ -73,6 +72,9 @@ public class TranscriptionEngine {
 	//TODO TranscriptionEngine getDefault() sutvarkyti daug kur kimba
 
 	public static TranscriptionEngine getDefault() {
+		if(IOD.INSTANCE == null){
+			System.out.println("----------------IOD.INSTANCE := null---------------------");
+		}
 		return IOD.INSTANCE;
 	}
 
@@ -214,9 +216,6 @@ public class TranscriptionEngine {
 		 * {@link IUPACTable}s by ID.
 		 */
 		public Builder table(Integer id) {
-			InputStream classpathIs = getClass().getClassLoader().getResourceAsStream("org/biojava/nbio/core/sequence/iupac.txt");
-//			InputStream classpathIs = MyApplication.getAppContext().getResources().openRawResource(R.raw.iupac);
-
 			table = IUPACParser.getInstance().getTable(id);
 			return this;
 		}
